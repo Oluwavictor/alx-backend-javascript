@@ -12,20 +12,17 @@ function countStudents(path) {
       name: 0,
       field: 3
     };
-
     validStudentsData.forEach(student => {
       const field = student[fieldIndexMap.field];
       fieldsSet.add(field);
       fieldCounts[field] = (fieldCounts[field] || 0) + 1;
     });
     console.log(`Number of students: ${validStudentsData.length}`);
-
     fieldsSet.forEach(field => {
       const studentsInField = validStudentsData
         .filter(student => student[fieldIndexMap.field] === field)
         .map(student => student[fieldIndexMap.name])
         .join(', ');
-
       console.log(`Number of students in ${field}: ${fieldCounts[field]}. List: ${studentsInField}`);
     });
   } catch (error) {
