@@ -4,14 +4,10 @@ function countStudents(path) {
   try {
     const data = fs.readFileSync(path, 'utf8');
     const lines = data.split('\n');
-
     const studentsData = lines.slice(1).map(line => line.split(','));
-
     const validStudentsData = studentsData.filter(student => student.length > 3);
-
     const fieldCounts = {};
     const fieldsSet = new Set();
-
     const fieldIndexMap = {
       name: 0,
       field: 3
@@ -22,7 +18,6 @@ function countStudents(path) {
       fieldsSet.add(field);
       fieldCounts[field] = (fieldCounts[field] || 0) + 1;
     });
-
     console.log(`Number of students: ${validStudentsData.length}`);
 
     fieldsSet.forEach(field => {
