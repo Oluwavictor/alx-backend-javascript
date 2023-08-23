@@ -2,6 +2,9 @@ const http = require('http');
 const fs = require('fs');
 const { argv } = require('process');
 
+const hostname = 'localhost';
+const port = 1245;
+
 function countStudents(path, stream) {
   if (fs.existsSync(path)) {
     const data = fs.readFileSync(path, 'utf8');
@@ -32,9 +35,6 @@ function countStudents(path, stream) {
   }
 }
 
-const hostname = 'localhost';
-const port = 1245;
-
 const app = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
@@ -56,8 +56,4 @@ const app = http.createServer((req, res) => {
 
 app.listen(port, hostname);
 
-if (req.url === '/') {
-    res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
-    res.write('This is the list of our students\n');
-    countStudents(argv[2], res);module.exports = app;
+module.exports = app;
