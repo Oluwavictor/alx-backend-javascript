@@ -4,7 +4,7 @@ async function countStudents(path) {
   if (!fs.existsSync(path)) {
     throw Error('Cannot load the database');
   }
-  
+
   return new Promise((resolve) => {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
@@ -15,7 +15,7 @@ async function countStudents(path) {
       students.forEach((studentData) => {
         result.push(studentData.split(','));
       });
-      
+
       result.shift();
       const newData = [];
       result.forEach((studentData) => newData.push([studentData[0], studentData[3]]));
