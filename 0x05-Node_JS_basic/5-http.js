@@ -56,4 +56,8 @@ const app = http.createServer((req, res) => {
 
 app.listen(port, hostname);
 
-module.exports = app;
+if (req.url === '/') {
+    res.end('Hello Holberton School!');
+  } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
+    countStudents(argv[2], res);module.exports = app;
